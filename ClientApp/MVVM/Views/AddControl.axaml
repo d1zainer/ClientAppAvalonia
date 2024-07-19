@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:ClientApp.MVVM.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+             x:Class="ClientApp.MVVM.Views.AddControl"
+             x:DataType="vm:AddControlViewModel">
+
+  <UserControl.Styles>
+    <StyleInclude Source="/Styles/Styles.axaml" />
+  </UserControl.Styles>
+
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RowDefinitions="Auto, *, Auto, Auto">
+      <TextBlock Classes="Title" HorizontalAlignment="Center" Margin="10" Grid.Row="0">
+        Добавить пациента
+      </TextBlock>
+
+      <!-- Поля ввода  -->
+      <StackPanel Grid.Row="1" Margin="10">
+        <TextBlock Text="Имя:" Margin="0 0 0 5" />
+        <TextBox Text="{Binding PatientName}" />
+
+        <TextBlock Text="Пол:" Margin="0 10 0 5" />
+        <ComboBox x:Name="GenderItem" SelectedItem="{Binding PatientGender}">
+          <ComboBoxItem Content="Мужской" />
+          <ComboBoxItem Content="Женский" />
+        </ComboBox>
+
+        <TextBlock Text="Дата рождения:" Margin="0 10 0 5" />
+        <DatePicker x:Name="DataPicker" />
+
+        <TextBlock Text="Данные новго пациента:" Margin="0 10 0 5" />
+        <TextBox IsHitTestVisible="False" TextWrapping="WrapWithOverflow" Text="{Binding NewPatientInformation}" />
+
+      </StackPanel>
+
+      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center">
+        <Button Content="Добавить" Margin="5" Classes="btn" Click="AddBtn_click" />
+        <Button Content="Отмена" Margin="5" Classes="btn" Click="CanselBtn_click" />
+      </StackPanel>
+
+      <!-- Окно ошибок и текст -->
+      <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Margin="5 0 5 10">
+        <TextBlock Text="Окно ошибок" HorizontalAlignment="Center" Classes="Title" FontSize="15"/>
+        <TextBox Name="ErrorTextBox" Foreground="Red" IsReadOnly="True" Height="45" TextWrapping="WrapWithOverflow" IsHitTestVisible="False" Text="{Binding ErrorMessage} "/>
+      </StackPanel>
+
+
+    </Grid>
+</UserControl>

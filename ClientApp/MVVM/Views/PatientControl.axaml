@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:ClientApp.MVVM.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+             xmlns:Converter="using:ClientApp"
+             x:Class="ClientApp.MVVM.Views.PatientControl"
+             x:DataType="vm:PatientControlViewModel">
+
+  <UserControl.Styles>
+    <StyleInclude Source="/Styles/Styles.axaml" />
+  </UserControl.Styles>
+  
+  <UserControl.Resources>
+    <Converter:GenderConverter x:Key="GenderConverter" />
+  </UserControl.Resources>
+  
+  <Grid HorizontalAlignment="Stretch" RowDefinitions="Auto, *, Auto" VerticalAlignment="Stretch">
+    <TextBlock Classes="Title" HorizontalAlignment="Center" Margin="10" Grid.Row="0">
+      Список всех пациентов
+    </TextBlock>
+
+    <!-- DataGrid -->
+    <DataGrid Margin="10 10 10 60" Name="myDataGrid"
+           Background="#64576B"
+           HorizontalGridLinesBrush="#64576B"
+           VerticalGridLinesBrush="#64576B"
+           Classes="PatientTable"
+           GridLinesVisibility="All"
+           ItemsSource="{Binding Patients}"
+           HorizontalAlignment="Stretch"
+           VerticalAlignment="Stretch"
+           Grid.Row="1">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Полное имя" Width="2.5*" Binding="{Binding Fullname}" />
+        <DataGridTextColumn Header="День рождения" Width="2*" Binding="{Binding Birthday}" />
+        <DataGridTextColumn Header="GUID" Width="2.5*" Binding="{Binding Guid}" />
+        <DataGridTextColumn Header="Пол" Width="1*" Binding="{Binding Gender, Converter={StaticResource GenderConverter}}" />
+      </DataGrid.Columns>
+    </DataGrid>
+
+    <!-- Кнопка "Обновить"-->
+    <Button Grid.Row="2" Click="UpdateBtn" Content="Обновить" Classes="btn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0 -120 0 0"/>
+
+    <!-- Окно ошибок  -->
+    <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Margin="5 0 5 10" >
+      <TextBlock Text="Окно ошибок" HorizontalAlignment="Center" Classes="Title" FontSize="15"/>
+      <TextBox Name="ErrorTextBox" Foreground="Red" IsReadOnly="True" Height="45" TextWrapping="WrapWithOverflow" IsHitTestVisible="False" Text="{Binding ErrorMessage} "/>
+    </StackPanel>
+  </Grid>
+
+</UserControl>

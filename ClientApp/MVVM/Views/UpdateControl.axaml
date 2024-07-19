@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="using:ClientApp.MVVM.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+             x:Class="ClientApp.MVVM.Views.UpdateControl"
+             x:DataType="vm:UpdateControlViewModel">
+
+  <UserControl.Styles>
+    <StyleInclude Source="/Styles/Styles.axaml" />
+  </UserControl.Styles>
+  <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RowDefinitions="Auto, Auto, *, Auto, Auto, Auto">
+    <TextBlock Classes="Title" HorizontalAlignment="Center" Margin="10" Grid.Row="0">
+      Обновить данные пациента
+    </TextBlock>
+
+    <!-- Поле для ввода ID пациента -->
+    <StackPanel Grid.Row="1" Margin="10">
+      <TextBlock Text="Введите ID пациента:" Margin="0 0 0 5" />
+      <TextBox Text="{Binding SearchPatientId} "/>
+    </StackPanel>
+
+    <!-- Поля редактирования данных пациента -->
+    <StackPanel Grid.Row="2" Margin="10">
+      <TextBlock Text="Имя:" Margin="0 -10 0 5" />
+      <TextBox Text="{Binding FullNamePatient}"/>
+
+      <Grid ColumnDefinitions="*, *" Margin="0 10 0 5">
+        <StackPanel Grid.Column="0" Margin="0 0 10 0">
+          <TextBlock Text="Пол:" Margin="0 0 0 5" />
+          <ComboBox x:Name="GenderTypeComboBox">
+            <ComboBoxItem Content="Мужской" />
+            <ComboBoxItem Content="Женский" />
+          </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="-160 0 0 0">
+          <TextBlock Text="Дата рождения:" Margin="0 0 0 5" />
+          <DatePicker x:Name="DataPicker"/>
+        </StackPanel>
+      </Grid>
+
+    </StackPanel>
+
+    <StackPanel Grid.Row="2" Margin=" 10 130 10 0  ">
+      <TextBlock Text="Результат обновления:" Margin="0 0 0 5" />
+    <!-- Текстблок -->
+    <TextBox Text="{Binding UpdateInfo}" IsReadOnly="False" TextWrapping="WrapWithOverflow" IsHitTestVisible="False" />
+      </StackPanel>
+
+    <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center">
+      <Button Content="Сохранить" Margin="5" Classes="btn" Click="SaveBtn_Click"/>
+      <Button Content="Отмена" Margin="5" Classes="btn" Click="CanselBtn_Click" />
+    </StackPanel>
+
+    <!-- Окно ошибок и текст -->
+    <StackPanel Grid.Row="5" VerticalAlignment="Bottom" Margin="5 0 5 10">
+      <TextBlock Text="Окно ошибок" HorizontalAlignment="Center" Classes="Title" FontSize="15"/>
+      <TextBox Foreground="Red" IsReadOnly="True" Height="45" TextWrapping="WrapWithOverflow" IsHitTestVisible="False" Text="{Binding ErrorMessage} "/>
+    </StackPanel>
+
+  </Grid>
+</UserControl>

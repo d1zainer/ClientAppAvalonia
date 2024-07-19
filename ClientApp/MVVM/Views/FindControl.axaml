@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:ClientApp.MVVM.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ClientApp.MVVM.Views.FindControl"
+             x:DataType="vm:FindControlViewModel">
+
+  <UserControl.Styles>
+    <StyleInclude Source="/Styles/Styles.axaml" />
+  </UserControl.Styles>
+
+  <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RowDefinitions="Auto, *, Auto, Auto">
+    <TextBlock Classes="Title" HorizontalAlignment="Center" Margin="10" Grid.Row="0">
+      Поиск пациента
+    </TextBlock>
+
+    <!-- Поля ввода данных -->
+    <StackPanel Grid.Row="1" Margin="10">
+      <TextBlock Text="Параметр:" Margin="0 0 0 5"/>
+      <TextBox Text="{Binding SearchValue}" IsReadOnly="False" />
+
+      <TextBlock Text="Тип параметра:" Margin="0 10 0 5" />
+      <ComboBox x:Name="ParameterTypeItem">
+        <ComboBoxItem Content="Имя пацииента" />
+        <ComboBoxItem Content="GUID" />
+      </ComboBox>
+
+      <TextBlock Text="Результаты поиска:" Margin="0 10 0 5" />
+      <TextBox Text="{Binding NewPatientInfo}" IsHitTestVisible="False" TextWrapping="WrapWithOverflow"  />
+    </StackPanel>
+
+    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center">
+      <Button Content="Найти" Margin="5" Classes="btn" Click="FindBtn_click" />
+      <Button Content="Отмена" Margin="5" Classes="btn" Click="CanselBtn_click" />
+    </StackPanel>
+
+    <!-- Окно ошибок -->
+    <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Margin="5 0 5 10">
+      <TextBlock Text="Окно ошибок" HorizontalAlignment="Center" Classes="Title" FontSize="15"/>
+      <TextBox Name="ErrorTextBox" Foreground="Red" IsReadOnly="True" Height="45" TextWrapping="WrapWithOverflow" IsHitTestVisible="False" Text="{Binding ErrorMessage}"/>
+    </StackPanel>
+
+  </Grid>
+</UserControl>

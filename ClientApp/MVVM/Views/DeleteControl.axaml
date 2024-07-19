@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ClientApp.MVVM.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+             x:Class="ClientApp.MVVM.Views.DeleteControl"
+              x:DataType="vm:DeleteControlViewModel">
+
+            
+
+  <UserControl.Styles>
+    <StyleInclude Source="/Styles/Styles.axaml" />
+  </UserControl.Styles>
+
+  <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RowDefinitions="Auto, *, Auto, Auto">
+    <TextBlock Classes="Title" HorizontalAlignment="Center" Margin="10" Grid.Row="0">
+      Удалить пациента
+    </TextBlock>
+
+    <!-- Поля ввода -->
+    <StackPanel Grid.Row="1" Margin="10">
+      <TextBlock Text="GUID пациента, которого надо удалить:" Margin="0 0 0 5" />
+      <TextBox IsReadOnly="False" Text="{Binding DeleteValue}" />
+
+      <TextBlock Text="Результат удаления:" Margin="0 10 0 5" />
+      <TextBox IsHitTestVisible="False" TextWrapping="WrapWithOverflow"   Text="{Binding ResultValue}"/>
+
+    </StackPanel>
+
+    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center">
+      <Button Content="Удалить" Margin="5" Classes="btn" Click="DeleteBtn_Click" />
+      <Button Content="Отмена" Margin="5" Classes="btn" Click="CancelBtn_Click" />
+    </StackPanel>
+
+    <!-- Окно ошибок -->
+    <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Margin="5 0 5 10">
+      <TextBlock Text="Окно ошибок" HorizontalAlignment="Center" Classes="Title" FontSize="15"/>
+      <TextBox Foreground="Red" IsReadOnly="True" Height="45" TextWrapping="WrapWithOverflow" IsHitTestVisible="False"  Text="{Binding ErrorMessage}" />
+    </StackPanel>
+
+  </Grid>
+
+</UserControl>

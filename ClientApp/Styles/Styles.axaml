@@ -1,0 +1,120 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Стили для кнопок -->
+  <Style Selector="Button.btn">
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="CornerRadius" Value="10" />
+    <Setter Property="Width" Value="160" />
+    <Setter Property="Height" Value="40" />
+    <Setter Property="FontSize" Value="15"/>
+    <Setter Property="FontFamily" Value="Roboto"/>
+     <Setter Property="VerticalAlignment" Value="Stretch" />
+     <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Foreground" Value="#FEF6FFFF" />
+    <Setter Property="RenderTransform">
+    
+      <ScaleTransform ScaleX="1.0" ScaleY="1.0"/>
+    </Setter>
+    <Setter Property="Transitions">
+      <Transitions>
+        <DoubleTransition Property="Width" Duration="0:0:0.2"/>
+        <DoubleTransition Property="ScaleTransform.ScaleX" Duration="0:0:0.2"/>
+        <DoubleTransition Property="ScaleTransform.ScaleY" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+
+  <Style Selector="Button.btn:pointerover">
+    <Setter Property="RenderTransform">
+      <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+    </Setter>
+  </Style>
+
+  <!-- Стили для переключателей -->
+  <Style Selector="ToggleButton.btn">
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="CornerRadius" Value="10" />
+    <Setter Property="Width" Value="160" />
+    <Setter Property="Height" Value="40" />
+    <Setter Property="FontSize" Value="15"/>
+    <Setter Property="FontFamily" Value="Roboto"/>
+    <Setter Property="RenderTransform">
+      <ScaleTransform ScaleX="1.0" ScaleY="1.0"/>
+    </Setter>
+    <Setter Property="Transitions">
+      <Transitions>
+        <DoubleTransition Property="Width" Duration="0:0:0.2"/>
+        <DoubleTransition Property="ScaleTransform.ScaleX" Duration="0:0:0.2"/>
+        <DoubleTransition Property="ScaleTransform.ScaleY" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+
+  <Style Selector="ToggleButton.btn:pointerover">
+    <Setter Property="RenderTransform">
+      <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+    </Setter>
+  </Style>
+
+  <!-- Стили для заголовков -->
+  <Style Selector="TextBlock.Title">
+    <Setter Property="Foreground" Value="#FEF6FF"/>
+    <Setter Property="FontSize" Value="30"/>
+    <Setter Property="FontFamily" Value="Roboto"/>
+  </Style>
+
+  <!-- Стили для DataGrid -->
+  <Style Selector="DataGrid.PatientTable">
+    <Setter Property="BorderBrush" Value="#ff8961cc"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Background" Value="#EECEFF"/>
+    <!-- Фон таблицы -->
+    <!-- Фон строк -->
+    <Setter Property="RowHeight" Value="35"/>
+    <Setter Property="ColumnHeaderHeight" Value="40"/>
+    <Setter Property="FontFamily" Value="Roboto"/>
+    <Setter Property="FontSize" Value="12"/>
+    <Setter Property="Foreground" Value="White"/>
+    <!-- Цвет текста -->
+    <Setter Property="IsReadOnly" Value="True"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+  </Style>
+
+
+  <!-- Стили для заголовков столбцов DataGrid -->
+  <Style Selector="DataGrid.PatientTable DataGridColumnHeader">
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="FontWeight" Value="Bold"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="Background" Value="Black"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="BorderBrush" Value="#262738"/>
+    <Setter Property="BorderThickness" Value="1,1,1,1"/>
+    <Setter Property="Padding" Value="5"/>
+  </Style>
+
+  <!-- Стили для строк DataGrid -->
+  <Style Selector="DataGrid.PatientTable DataGridRow">
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="BorderBrush" Value="#262738"/>
+    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+    <Setter Property="Padding" Value="5"/>
+  </Style>
+
+  <!-- Стили для ячеек DataGrid -->
+  <Style Selector="DataGrid.PatientTable DataGridCell">
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="Padding" Value="5"/>
+    <Setter Property="BorderBrush" Value="#262738"/>
+    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+   
+  </Style>
+
+
+</Styles>
